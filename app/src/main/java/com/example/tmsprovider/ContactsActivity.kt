@@ -7,6 +7,7 @@ import com.example.tmsprovider.databinding.ActivityContactsBinding
 class ContactsActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityContactsBinding
+    val contactList: MutableList<Contact> = ArrayList<Contact>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
