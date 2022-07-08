@@ -12,6 +12,7 @@ import com.example.tmsprovider.databinding.ActivityContactsBinding
 class ContactsActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityContactsBinding
+    val contactList: MutableList<Contact> = ArrayList<Contact>()
 
     @SuppressLint("Range")
     override fun onCreate(savedInstanceState: Bundle?) {
