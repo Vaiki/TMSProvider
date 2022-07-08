@@ -35,7 +35,7 @@ class ContactsHolder(private val binding: ItemContactBinding) :
             Glide.with(itemView.context)
                 .load(contact.image)
                 .centerCrop()
-                .placeholder(R.drawable.ic_launcher_background)
+                .placeholder(R.drawable.ic_baseline_person_24)
                 .into(ivAvatar)
         }
     }

@@ -38,11 +38,11 @@ class ContactsActivity : AppCompatActivity() {
                 val obj = Contact()
                 obj.name = name
                 obj.number = number
-                val photo_uri =
+                val photoUri =
                     contacts.getString(contacts.getColumnIndex(ContactsContract.CommonDataKinds.Phone.PHOTO_URI))
-                if (photo_uri != null) {
+                if (photoUri != null) {
                     obj.image =
-                        MediaStore.Images.Media.getBitmap(contentResolver, Uri.parse(photo_uri))
+                        MediaStore.Images.Media.getBitmap(contentResolver, Uri.parse(photoUri))
                 }
                 contactList.add(obj)
             }
