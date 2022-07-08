@@ -1,5 +1,6 @@
 package com.example.tmsprovider
 
+import android.annotation.SuppressLint
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -12,13 +13,14 @@ class ContactsActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityContactsBinding
 
+    @SuppressLint("Range")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityContactsBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        contact_list.layoutManager = LinearLayoutManager(this)
+        binding.rvContacts.layoutManager = LinearLayoutManager(this)
 
-        btn_read_contacts.setOnClickListener {
+        binding.btnReadContacts.setOnClickListener {
             val contactList: MutableList<Contact> = ArrayList()
             val contacts = contentResolver.query(
                 ContactsContract.CommonDataKinds.Phone.CONTENT_URI,
@@ -27,7 +29,7 @@ class ContactsActivity : AppCompatActivity() {
                 null,
                 null
             )
-            while (contacts.moveToNext()) {
+            while (contacts!!.moveToNext()) {
                 val name =
                     contacts.getString(contacts.getColumnIndex(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME))
                 val number =
@@ -43,7 +45,7 @@ class ContactsActivity : AppCompatActivity() {
                 }
                 contactList.add(obj)
             }
-            contact_list.adapter = ContactsAdapter(contactList, this)
+            binding.rvContacts.adapter = ContactsAdapter(contactList)
             contacts.close()
         }
     }
